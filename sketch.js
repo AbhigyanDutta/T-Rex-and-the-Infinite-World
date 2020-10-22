@@ -9,6 +9,7 @@ var cloudsGroup, cloudImage;
 var obstaclesGroup, obstacle1, obstacle2, obstacle3, obstacle4, obstacle5, obstacle6;
 
 var score;
+localStorage["HighestScore"] = 0;
 
 
 function preload() {
@@ -144,12 +145,19 @@ function draw() {
 
     if (touches.length > 0  || mousePressedOver(Restart)) {
       gameState = PLAY;
-      score = 0;
+      
       obstaclesGroup.destroyEach();
       cloudsGroup.destroyEach();
       trex.y = 190;
       trex.changeAnimation("running", trex_running);
       touches = [];
+      
+      if(localStorage["HighestScore"] < score)
+      {
+        localStorage[HighestScore"] = score;
+                     
+      }
+      score = 0;
     }
 
 
