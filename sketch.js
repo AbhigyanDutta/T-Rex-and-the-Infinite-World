@@ -77,6 +77,7 @@ function setup() {
 function draw() {
   background(180);
   //displaying score
+  
   fill("red");
   textSize(30);
   text("Score: " + score, windowWidth  - 200, 70);
@@ -141,13 +142,14 @@ function draw() {
     cloudsGroup.setVelocityXEach(0);
 
 
-    if (keyDown("R") || mousePressedOver(Restart)) {
+    if (touches.length > 0  || mousePressedOver(Restart)) {
       gameState = PLAY;
       score = 0;
       obstaclesGroup.destroyEach();
       cloudsGroup.destroyEach();
       trex.y = 190;
       trex.changeAnimation("running", trex_running);
+      touches = [];
     }
 
 
